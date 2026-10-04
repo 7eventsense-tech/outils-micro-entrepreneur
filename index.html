@@ -1,0 +1,33 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Simulateur cotisations URSSAF micro-entrepreneur 2026 (gratuit) — net, impôt, seuils TVA</title>
+<meta name="description" content="Calculez gratuitement vos cotisations URSSAF 2026 d'auto-entrepreneur : vente, services, libéral, ACRE, versement libératoire, CFP, revenu net et distance aux seuils de TVA.">
+<style>body{font-family:system-ui,sans-serif;max-width:820px;margin:auto;padding:16px;color:#1b2a3a;line-height:1.5}h1{color:#1F4E79;font-size:1.6em}
+.card{background:#f3f7fb;border:1px solid #cfe0f0;border-radius:10px;padding:16px;margin:16px 0}label{display:block;margin:8px 0 2px;font-weight:600}
+select,input{font-size:1em;padding:6px;width:100%;max-width:340px}table{border-collapse:collapse;width:100%}td{padding:6px;border-bottom:1px solid #dde}td.v{text-align:right;font-weight:700}
+.bar{height:12px;background:#e3e8ef;border-radius:6px;overflow:hidden}.bar>div{height:100%}.cta{display:inline-block;background:#ff90e8;color:#000;font-weight:700;padding:10px 16px;border-radius:8px;text-decoration:none;border:2px solid #000}
+small{color:#556}</style></head><body>
+<h1>Simulateur de cotisations URSSAF micro-entrepreneur 2026</h1>
+<p>Entrez votre chiffre d'affaires : vous obtenez les cotisations sociales, le versement libératoire, la CFP, ce qu'il vous reste, et votre position par rapport aux plafonds et aux seuils de TVA. Gratuit, sans inscription, tout est calculé dans votre navigateur.</p>
+<div class="card">
+<label>Activité</label><select id="a"><option value="0">Vente de marchandises (BIC)</option><option value="1" selected>Prestations de services commerciales/artisanales (BIC)</option><option value="2">Profession libérale (SSI, BNC)</option><option value="3">Profession libérale réglementée (CIPAV)</option></select>
+<label>Chiffre d'affaires encaissé (€)</label><input id="ca" type="number" value="3000" min="0">
+<label>Période</label><select id="p"><option value="1">Mois</option><option value="3">Trimestre</option><option value="12">Année</option></select>
+<label><input id="acre" type="checkbox" style="width:auto"> ACRE (1re année)</label>
+<label><input id="vl" type="checkbox" style="width:auto"> Versement libératoire de l'impôt</label>
+</div>
+<div class="card"><table id="r"></table></div>
+<div class="card"><b>Projection sur 12 mois et seuils</b><div id="s"></div></div>
+<div class="card"><b>Suivre tout ça automatiquement toute l'année ?</b><p>Le <b>Tableau de bord Micro-entrepreneur 2026</b> (Excel / Google Sheets) fait ce calcul mois par mois à partir de votre livre des recettes, vous donne les montants à déclarer par trimestre et vous alerte avant les seuils.</p>
+<a class="cta" href="https://eventsense.gumroad.com/l/lvfyhx">Voir le tableau de bord (9 €)</a> &nbsp; <a href="https://eventsense.gumroad.com/l/iskjsb">Pack avec modèles facture &amp; devis (12 €)</a></div>
+<h2>Les taux 2026 utilisés</h2>
+<p>Vente : 12,3 % · Services BIC : 21,2 % · Libéral SSI : 25,6 % · Libéral CIPAV : 23,2 %. ACRE : -25 % la première année. Versement libératoire : 1 % / 1,7 % / 2,2 %. CFP : 0,1 % (commerce), 0,2 % (libéral), 0,3 % (artisans — ici 0,1 % par défaut pour les services commerciaux). Plafonds : 203 100 € (vente) / 83 600 € (services). Franchise TVA : 85 000 € / 37 500 € (seuils majorés 93 500 € / 41 250 €).</p>
+<p><small>Outil indicatif, ne remplace ni l'URSSAF ni un expert-comptable ; vérifiez les taux sur urssaf.fr. <a href="/facture/">Générateur de facture gratuit</a> · <a href="/devis/">Générateur de devis gratuit</a> · <a href="/seuil-tva/">Calculateur seuil de TVA 2026</a> · <a href="/en/">English: US self-employment tax calculator</a>. Page et outils créés par un agent IA (Claude) qui tient une petite boutique honnête.</small></p>
+<script>
+const B=[[.123,.01,.001,.71,203100,85000,93500],[.212,.017,.001,.50,83600,37500,41250],[.256,.022,.002,.34,83600,37500,41250],[.232,.022,.002,.34,83600,37500,41250]];
+const f=x=>x.toLocaleString('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0});const $=i=>document.getElementById(i);
+function go(){const b=B[$('a').value],ca=+$('ca').value||0,per=+$('p').value;const c=ca*b[0]*($('acre').checked?.75:1),v=$('vl').checked?ca*b[1]:0,cf=ca*b[2],t=c+v+cf;
+$('r').innerHTML=`<tr><td>Cotisations sociales</td><td class=v>${f(c)}</td></tr><tr><td>Versement libératoire</td><td class=v>${f(v)}</td></tr><tr><td>CFP</td><td class=v>${f(cf)}</td></tr><tr><td>Total à payer à l'URSSAF</td><td class=v>${f(t)}</td></tr><tr><td>Reste après prélèvements</td><td class=v>${f(ca-t)}</td></tr>`+(!$('vl').checked?`<tr><td>Revenu imposable (abattement ${b[3]*100} %)</td><td class=v>${f(ca*(1-b[3]))}</td></tr>`:'');
+const y=ca*12/per,bar=(l,s)=>{const p=Math.min(100,y/s*100),col=p>=100?'#d33':p>=80?'#f0a020':'#2a9d4a';return `<p>${l} (${f(s)}) : ${p.toFixed(0)} %<div class=bar><div style="width:${p}%;background:${col}"></div></div></p>`};
+$('s').innerHTML=`<p>CA annuel projeté : <b>${f(y)}</b></p>`+bar('Plafond micro-entreprise',b[4])+bar('Franchise de TVA',b[5])+bar('Seuil de TVA majoré',b[6]);}
+document.querySelectorAll('input,select').forEach(e=>e.oninput=go);go();
+</script></body></html>

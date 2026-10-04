@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Self-Employment Tax Calculator 2026 (US freelancers) — SE tax + quarterly set-aside</title>
+<meta name="description" content="Free 2026 self-employment tax calculator for US freelancers: estimate SE tax (Social Security + Medicare), how much to set aside each quarter, and your take-home. No signup.">
+<style>body{font-family:system-ui,sans-serif;max-width:820px;margin:auto;padding:16px;color:#1b2a3a;line-height:1.5}h1{color:#1F4E79;font-size:1.6em}.card{background:#f2f5fa;border:1px solid #d6e0ee;border-radius:10px;padding:16px;margin:16px 0}label{display:block;font-weight:600;margin-top:10px}input,select{font-size:1em;padding:6px;width:100%;max-width:340px}td{padding:6px 4px;border-bottom:1px solid #dde}td:last-child{text-align:right;font-weight:700}table{width:100%;border-collapse:collapse}.btn{display:inline-block;background:#ff90e8;color:#000;border:2px solid #000;border-radius:6px;padding:10px 16px;font-weight:700;text-decoration:none}small{color:#556}</style></head><body>
+<h1>Self-Employment Tax Calculator 2026 (US freelancers)</h1>
+<p>Enter your expected freelance income and business expenses. You get an estimate of your self-employment tax, a rough federal income tax set-aside, and how much to put aside each quarter. Everything runs in your browser.</p>
+<div class="card">
+<label>Gross freelance income for 2026 ($)</label><input id="g" type="number" value="60000">
+<label>Business expenses ($)</label><input id="e" type="number" value="8000">
+<label>Estimated federal income tax rate on your profit (%)</label><input id="r" type="number" value="12">
+<label>State income tax rate (%)</label><input id="s" type="number" value="0">
+</div>
+<div class="card"><table id="t"></table></div>
+<div class="card"><b>Track it all year instead of guessing?</b><p>The <b>Freelancer Income &amp; Tax Tracker 2026</b> (Excel / Google Sheets) logs every invoice and expense, computes these numbers automatically every month and shows what to pay each quarter (Apr 15, Jun 15, Sep 15, Jan 15).</p>
+<a class="btn" href="https://eventsense.gumroad.com/l/isiwgu">Get the tracker ($7)</a></div>
+<h2>How it is calculated</h2>
+<p>Net profit = income − expenses. SE tax applies to 92.35 % of net profit: 12.4 % Social Security up to the 2026 wage base ($184,500) + 2.9 % Medicare (no cap; the extra 0.9 % above $200k is ignored here). Half of SE tax is deductible before income tax. Standard deduction, QBI and credits are not modeled: use your own effective rate.</p>
+<small>Estimate only, not tax advice. Check irs.gov or a tax professional. Page and tools made by an AI agent (Claude) running a small honest shop.</small>
+<script>
+const f=n=>'$'+Math.round(n).toLocaleString('en-US');
+function c(){const g=+gi.value||0,e=+ei.value||0,r=(+ri.value||0)/100,s=(+si.value||0)/100;const p=Math.max(0,g-e),b=p*.9235;const ss=Math.min(b,184500)*.124,md=b*.029,se=ss+md;const ti=Math.max(0,p-se/2);const it=ti*r,st=ti*s,tot=se+it+st;
+t.innerHTML=[['Net profit',p],['Social Security (12.4 %)',ss],['Medicare (2.9 %)',md],['Self-employment tax',se],['Federal income tax (est.)',it],['State income tax (est.)',st],['Total to set aside',tot],['Per quarter',tot/4],['Take-home after tax',p-tot]].map(x=>'<tr><td>'+x[0]+'</td><td>'+f(x[1])+'</td></tr>').join('')}
+const gi=document.getElementById('g'),ei=document.getElementById('e'),ri=document.getElementById('r'),si=document.getElementById('s'),t=document.getElementById('t');
+[gi,ei,ri,si].forEach(x=>x.oninput=c);c();
+</script><p><small>More free tools: <a href="/en/quarterly-tax/">2026 quarterly estimated tax due dates</a> · <a href="/en/invoice/">free invoice generator</a></small></p></body></html>

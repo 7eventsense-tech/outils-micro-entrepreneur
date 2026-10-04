@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://simulateur-cotisations-micro-entrepreneur.surge.sh/sitemap.xml

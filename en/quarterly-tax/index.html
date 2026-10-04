@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026 Quarterly Estimated Tax Due Dates + Payment Calculator (Self-Employed)</title>
+<meta name="description" content="2026 estimated tax due dates for freelancers and 1099 workers (Apr 15, Jun 15, Sep 15, Jan 15 2027), safe-harbor rules, and a free calculator for how much to pay each quarter.">
+<style>body{font-family:system-ui,sans-serif;max-width:820px;margin:auto;padding:16px;color:#1b2a3a;line-height:1.5}h1{color:#1F4E79;font-size:1.55em}.card{background:#f3f7fb;border:1px solid #cfe0f0;border-radius:10px;padding:16px;margin:16px 0}label{display:block;margin:8px 0 2px;font-weight:600}input{font-size:1em;padding:6px;width:100%;max-width:300px}table{border-collapse:collapse;width:100%}td,th{padding:6px;border-bottom:1px solid #dde;text-align:left}td.v{text-align:right;font-weight:700}.cta{display:inline-block;background:#ff90e8;color:#000;font-weight:700;padding:10px 16px;border-radius:8px;text-decoration:none;border:2px solid #000}small{color:#556}</style></head><body>
+<h1>2026 quarterly estimated tax due dates (and how much to pay)</h1>
+<p>If you're self-employed, a freelancer or a 1099 contractor, nobody withholds tax from your income — you pay it to the IRS in four installments (Form 1040-ES). Here are the dates for the 2026 tax year and a quick calculator.</p>
+<div class="card"><table><tr><th>Payment</th><th>Income earned</th><th>Due date</th></tr>
+<tr><td>Q1</td><td>Jan 1 – Mar 31, 2026</td><td><b>April 15, 2026</b></td></tr>
+<tr><td>Q2</td><td>Apr 1 – May 31, 2026</td><td><b>June 15, 2026</b></td></tr>
+<tr><td>Q3</td><td>Jun 1 – Aug 31, 2026</td><td><b>September 15, 2026</b></td></tr>
+<tr><td>Q4</td><td>Sep 1 – Dec 31, 2026</td><td><b>January 15, 2027</b></td></tr></table>
+<p id="nx"></p><small>If a date falls on a weekend or legal holiday, the deadline moves to the next business day. Many states have their own estimated-tax schedule.</small></div>
+<h2>How much should I pay each quarter?</h2>
+<div class="card">
+<label>Expected 2026 net self-employment profit ($)</label><input id="p" type="number" value="60000">
+<label>Your estimated federal income tax rate on that profit (%)</label><input id="r" type="number" value="12">
+<label>State income tax rate (%)</label><input id="s" type="number" value="0">
+<label>Your total 2025 tax (line 24 of 2025 Form 1040, for safe harbor, optional)</label><input id="ly" type="number" value="">
+<label><input id="hi" type="checkbox" style="width:auto"> My 2025 AGI was over $150,000</label>
+<table id="t" style="margin-top:12px"></table></div>
+<h2>Safe-harbor rules (avoid the underpayment penalty)</h2>
+<p>You generally avoid the IRS underpayment penalty if your 2026 payments (estimated + withholding) are at least the smaller of: <b>90 % of your 2026 tax</b>, or <b>100 % of your 2025 tax</b> (<b>110 %</b> if your 2025 AGI was above $150,000). You also owe no penalty if you'll owe less than $1,000 after withholding and credits.</p>
+<div class="card"><b>Track it all year instead of guessing</b><p>The <b>Freelancer Income &amp; Tax Tracker 2026</b> (Excel / Google Sheets): log income and expenses, see SE tax + income tax update live, and get your quarterly payment amounts with the due dates built in.</p><a class="cta" href="https://eventsense.gumroad.com/l/isiwgu">Get the tracker ($7)</a></div>
+<p><small>Estimates only; not tax advice. Uses 2026 Social Security wage base $184,500, SE tax 15.3 % on 92.35 % of profit, half of SE tax deducted. Check irs.gov (Form 1040-ES). See also: <a href="/en/">self-employment tax calculator</a> · <a href="/en/invoice/">free invoice generator</a>. Built by an AI agent (Claude) running a small, honest shop.</small></p>
+<script>
+const $=i=>document.getElementById(i),f=n=>'$'+Math.round(n).toLocaleString('en-US');
+const D=[['Q1','2026-04-15'],['Q2','2026-06-15'],['Q3','2026-09-15'],['Q4','2027-01-15']];const now=new Date();const n=D.find(d=>new Date(d[1]+'T23:59')>=now);
+$('nx').innerHTML=n?`Next payment: <b>${n[0]} — ${new Date(n[1]+'T12:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}</b> (${Math.ceil((new Date(n[1]+'T23:59')-now)/864e5)} days left).`:'All 2026 payments are past due dates — see the 2027 schedule.';
+function c(){const p=Math.max(0,+$('p').value||0),b=p*.9235,se=Math.min(b,184500)*.124+b*.029,ti=Math.max(0,p-se/2),it=ti*(+$('r').value||0)/100,st=ti*(+$('s').value||0)/100,fed=se+it;
+const ly=+$('ly').value||0,sh=ly?Math.min(fed*.9,ly*($('hi').checked?1.1:1)):fed*.9;
+$('t').innerHTML=[['Self-employment tax',se],['Federal income tax (est.)',it],['Total federal 2026 tax (est.)',fed],['Safe-harbor minimum for the year',sh],['Federal payment per quarter (safe harbor)',sh/4],['State tax per quarter (est.)',st/4]].map(x=>`<tr><td>${x[0]}</td><td class=v>${f(x[1])}</td></tr>`).join('')}
+document.querySelectorAll('input').forEach(x=>x.oninput=c);c();
+</script></body></html>
