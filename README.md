@@ -7,10 +7,10 @@ Outils web **gratuits, sans inscription, 100 % dans le navigateur** (aucune donn
 ## 🇫🇷 Micro-entrepreneurs
 | Outil | Lien |
 |---|---|
-| Simulateur de cotisations URSSAF 2026 (net, versement libératoire, ACRE, seuils) | [https://simulateur-cotisations-micro-entrepreneur.surge.sh/](https://simulateur-cotisations-micro-entrepreneur.surge.sh/) |
-| Calculateur de dépassement du seuil de TVA (franchise en base 2026) | [https://simulateur-cotisations-micro-entrepreneur.surge.sh/seuil-tva/](https://simulateur-cotisations-micro-entrepreneur.surge.sh/seuil-tva/) |
-| Générateur de facture PDF (mentions obligatoires, art. 293 B) | [https://simulateur-cotisations-micro-entrepreneur.surge.sh/facture/](https://simulateur-cotisations-micro-entrepreneur.surge.sh/facture/) |
-| Générateur de devis PDF | [https://simulateur-cotisations-micro-entrepreneur.surge.sh/devis/](https://simulateur-cotisations-micro-entrepreneur.surge.sh/devis/) |
+| Simulateur de cotisations URSSAF 2026 (net, versement libératoire, ACRE, seuils) | [https://7eventsense-tech.github.io/](https://7eventsense-tech.github.io/) |
+| Calculateur de dépassement du seuil de TVA (franchise en base 2026) | [https://7eventsense-tech.github.io/seuil-tva/](https://7eventsense-tech.github.io/seuil-tva/) |
+| Générateur de facture PDF (mentions obligatoires, art. 293 B) | [https://7eventsense-tech.github.io/facture/](https://7eventsense-tech.github.io/facture/) |
+| Générateur de devis PDF | [https://7eventsense-tech.github.io/devis/](https://7eventsense-tech.github.io/devis/) |
 
 ### Taux 2026 utilisés
 - Vente de marchandises (BIC) : 12,3 % — Prestations de services BIC : 21,2 % — BNC (SSI) : 25,6 % — BNC CIPAV : 23,2 %
@@ -21,9 +21,9 @@ Outils web **gratuits, sans inscription, 100 % dans le navigateur** (aucune donn
 ## 🇺🇸 US freelancers / self-employed
 | Tool | Link |
 |---|---|
-| Self-employment tax calculator 2026 (SE tax + quarterly set-aside) | [https://simulateur-cotisations-micro-entrepreneur.surge.sh/en/](https://simulateur-cotisations-micro-entrepreneur.surge.sh/en/) |
-| 2026 quarterly estimated tax due dates + payment calculator | [https://simulateur-cotisations-micro-entrepreneur.surge.sh/en/quarterly-tax/](https://simulateur-cotisations-micro-entrepreneur.surge.sh/en/quarterly-tax/) |
-| Free invoice generator (PDF, no sign-up) | [https://simulateur-cotisations-micro-entrepreneur.surge.sh/en/invoice/](https://simulateur-cotisations-micro-entrepreneur.surge.sh/en/invoice/) |
+| Self-employment tax calculator 2026 (SE tax + quarterly set-aside) | [https://7eventsense-tech.github.io/en/](https://7eventsense-tech.github.io/en/) |
+| 2026 quarterly estimated tax due dates + payment calculator | [https://7eventsense-tech.github.io/en/quarterly-tax/](https://7eventsense-tech.github.io/en/quarterly-tax/) |
+| Free invoice generator (PDF, no sign-up) | [https://7eventsense-tech.github.io/en/invoice/](https://7eventsense-tech.github.io/en/invoice/) |
 
 ## Modèles Excel (payants, pour soutenir le projet)
 - Tableau de bord micro-entrepreneur 2026 (Excel) : https://eventsense.gumroad.com/l/lvfyhx

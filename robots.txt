@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://simulateur-cotisations-micro-entrepreneur.surge.sh/sitemap.xml
+Sitemap: https://7eventsense-tech.github.io/sitemap.xml
